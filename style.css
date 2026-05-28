@@ -61,10 +61,9 @@ header p {
 
 section {
   padding: 2rem 1.5rem 3rem;
-  display: grid;
-  gap: 1.25rem;
   max-width: 1120px;
   margin: 0 auto;
+  /* stacked by default on small screens */
 }
 
 section div {
@@ -105,14 +104,30 @@ p:last-of-type {
 }
 
 @media (min-width: 720px) {
+  /* Use Flexbox on medium+ screens so milestones sit in a row */
   section {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto; /* allow horizontal scroll if needed */
+    padding-bottom: 3rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Keep each card to a reasonable width so they form a horizontal row */
+  section div {
+    flex: 0 0 320px;
+    min-width: 280px;
   }
 }
 
 @media (min-width: 1080px) {
   section {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+
+  section div {
+    flex: 0 0 300px;
   }
 }
 
