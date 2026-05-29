@@ -99,10 +99,28 @@ section div::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(244,248,255,0.0) 0%, rgba(244,248,255,0.95) 60%);
   transition: opacity 0.28s ease;
   z-index: 2;
   pointer-events: none;
+}
+
+/* Background image for the first timeline card (1968) */
+section div:first-of-type::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("img/1968.avif");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.65; /* visible by default */
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+
+/* Reduce the background image opacity on hover */
+section div:first-of-type:hover::before {
+  opacity: 0.15;
 }
 
 section div h2,
